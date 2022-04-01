@@ -6,8 +6,8 @@ import os
 def mark_card_done(card_id):
     params = {
         'idList': idList,
-        'key' : os.getenv('TRELLO_KEY'),
-        'token' : os.getenv('TRELLO_TOKEN') 
+        'key' : os.getenv('TRELLO_API_KEY'),
+        'token' : os.getenv('TRELLO_API_TOKEN') 
     }
     requests.post('https://api.trello.com/1/cards/', params=params)
 
@@ -18,7 +18,7 @@ def create_card(idList, name):
         'key' : os.getenv('TRELLO_KEY'),
         'token' : os.getenv('TRELLO_TOKEN')
     }
-    request.post('https://api.trello.com/1/cards/{card_id}', params=params)
+    request.post('https://api.trello.com/1/cards', params=params)
 
 
 
