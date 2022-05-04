@@ -6,7 +6,7 @@
     <h1 class="display-4">To-Do App</h1>
     <p class="lead">Just another to-do app.</p>
   </div>
-
+  
   <form action="/create-a-todo" method="post" class="form-example">
     <div class="form-example">
       <label for="name">Add new item: </label>
@@ -16,15 +16,20 @@
       <input type="submit" value="Submit">
     </div>
   </form>
-
+  
   <div class="row">
     <div class="col-md-12">
       <h2>Items</h2>
       <ul class="list-group mb-4">
         {% for item in items %}
-          <li>{{ item.title }} - {{item.status}}</li>
+        <li>{{ item.id }} - {{ item.name }} - {{item.status}}</li>
+        <form action="/move-to-done/{{item.id}}" method="post" class="form-example">
+          <div class="form-example">
+            <input type="submit" value="Done">
+          </div>
+        </form>
         {% endfor %}
       </ul>
     </div>
   </div>
-{% endblock %}
+  {% endblock %}
