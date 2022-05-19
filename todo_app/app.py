@@ -8,6 +8,13 @@ import os
 app = Flask(__name__)
 app.config.from_object(Config())
 
+class ViewModel:
+    def __init__(self, items):
+        self._items = items
+
+    @property
+    def items(self):
+        return self._items
 
 @app.route('/')
 def index():

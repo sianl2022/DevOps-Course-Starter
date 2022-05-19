@@ -1,0 +1,22 @@
+class ViewModel:
+    def __init__(self, items):
+        self._items = items
+    @property
+    def items(self):
+        return self._items
+    
+    @property
+    def todo_items(self):
+        # using self._items, pick out and return only the items that are in the 'todo' status
+        pass
+        
+    @property
+    def doing_items(self):
+        # using self._items, pick out and return only the items that are in the 'doing' status
+        pass
+
+    @property
+    def done_items(self):
+        # using self._items, pick out and return only the items that are in the 'done' status
+        pass
+    
