@@ -26,8 +26,10 @@ def test_view_can_ret_done_items():
     assert len (done_items) == 1
 
 def test_view_can_ret_all_done_items():
-    items= [Item('91011', 'end', 'done')]
-    items= [Item('12489', 'end1', 'done')]
+    items= [
+        Item('91011', 'end', 'done'),
+        Item('12489', 'end1', 'done')
+        ]
 
     item_view_model = ViewModel(items)
 
