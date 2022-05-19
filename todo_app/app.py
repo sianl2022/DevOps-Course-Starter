@@ -2,24 +2,18 @@ from flask import Flask, render_template, request
 from todo_app.data.trello_items import create_card, complete_card, get_items
 
 from todo_app.flask_config import Config
+from todo_app.templates.view_model import ViewModel
 import requests
 import os
 
 app = Flask(__name__)
 app.config.from_object(Config())
 
-class ViewModel:
-    def __init__(self, items):
-        self._items = items
-
-    @property
-    def items(self):
-        return self._items
-
 @app.route('/')
 def index():
     items = get_items()
-    return render_template('index.html', items = items)
+    item_view_model = ViewModel(items)
+    return render_template('index.html', view_model=item_view_model)
 
 @app.route('/create-a-todo', methods=['POST'])
 def create_new_todo():

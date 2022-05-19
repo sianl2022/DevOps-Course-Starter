@@ -1,8 +1,10 @@
-import os
-import pytest
-import requests
-from todo_app import app
-from dotenv import load_dotenv, find_dotenv
+from todo_app.templates.view_model import ViewModel
+from todo_app.data.item import Item
 
-def test_we_can_ret_todo_list():
-    assert 2 + 2 == 4
+def test_view_can_only_ret_todo_items():
+    items= [Item('1234', 'work', 'todo')]
+    item_view_model = ViewModel(items)
+
+    todo_items = item_view_model.todo_items
+
+    assert len (todo_items) == 1
