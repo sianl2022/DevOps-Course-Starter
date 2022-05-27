@@ -10,7 +10,7 @@ def get_items():
     "token":os.getenv("TRELLO_API_TOKEN"),
     "cards": "open" }
 
-    response = requests.request("GET", url, params=querystring)
+    response = requests.get(url, params=querystring)
 
     response_json = response.json()
 
