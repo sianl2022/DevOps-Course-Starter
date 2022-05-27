@@ -61,4 +61,4 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 
 You will not need your trello key and token to run these tests
 
-To run these tests in python you will need 
+To run the unit test please use command poetry run pytest
