@@ -3,11 +3,12 @@ import os
 from todo_app.data.item import Item
 
 def get_items():
-    url = "https://api.trello.com/1/boards/test_board_id/lists"
+    url = "https://api.trello.com/1/boards/{board}/lists"
 
     querystring = {
     "key":os.getenv("TRELLO_API_KEY"),
     "token":os.getenv("TRELLO_API_TOKEN"),
+    "board":os.getenv("TRELLO_BOARD_ID"),
     "cards": "open" }
 
     response = requests.get(url, params=querystring)

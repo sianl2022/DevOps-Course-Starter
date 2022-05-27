@@ -28,7 +28,7 @@ class StubResponse():
 def stub(url, params):
     test_board_id = os.environ.get('TRELLO_BOARD_ID')
     fake_response_data = None
-    if url == f'https://api.trello.com/1/boards/{test_board_id}/lists':
+    if url == f'https://api.trello.com/1/boards/{board}/lists':
         fake_response_data = [{
             'id': '123abc',
             'name': 'To Do',
@@ -39,7 +39,6 @@ def stub(url, params):
     raise Exception(f'Integration test stub no mock for url "{url}"')
 
 
-def test_index_page(monkeypatch, client):
     # Replace requests.get(url) with our own function
     monkeypatch.setattr(requests, 'get', stub)
 
