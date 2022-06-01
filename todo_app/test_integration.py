@@ -39,6 +39,7 @@ def stub(url, params):
     raise Exception(f'Integration test stub no mock for url "{url}"')
 
 
+def test_integration(monkeypatch, client):
     # Replace requests.get(url) with our own function
     monkeypatch.setattr(requests, 'get', stub)
 
