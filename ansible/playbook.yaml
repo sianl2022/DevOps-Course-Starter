@@ -1,5 +1,5 @@
 - name: To Do App on new web server
-  hosts: webservers
+  hosts: manage_node
   remote_user: ec2-user
   vars_prompt:
     - name: trello_key
@@ -68,3 +68,8 @@
       name: todoapp
       daemon_reload: true
     become: yes 
+
+
+
+
+
