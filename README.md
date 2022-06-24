@@ -62,3 +62,9 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 You will not need your trello key and token to run these tests
 
 To run the unit test please use command poetry run pytest
+
+## Running Ansible Playbook 
+
+login with your control IP ssh ec2-user@
+
+run your playbook with "ansible-playbook Playbook.yaml -i Inventory.ini"

@@ -1,0 +1,75 @@
+- name: To Do App on new web server
+  hosts: manage_node
+  remote_user: ec2-user
+  vars_prompt:
+    - name: trello_key
+      prompt: what is the trello key?
+      private: yes 
+    - name: trello_token
+      prompt: what is the trello token?
+      private: yes 
+    - name: trello_board_id
+      prompt: what is the board id?
+      private: yes
+
+
+  tasks:
+  - name: install git
+    yum:
+      name: git
+      state: present
+    become: yes  
+
+  - name: install python 3
+    yum:
+      name: python3
+      state: present
+    become: yes  
+
+  - name: install poetry if not already installed
+    ansible.builtin.shell: curl -sSL https://install.python-poetry.org | python3 -
+    args:
+      creates: ~/.local/bin/poetry
+
+  - name: create directory /opt/todoapp with owner permissions
+    ansible.builtin.file:
+      path: /opt/todoapp
+      state: directory
+      mode: '755'
+      owner: ec2-user
+    become: yes  
+
+  - name: checkout latest version of code from git
+    ansible.builtin.git:
+      repo: 'https://github.com/sianl2022/DevOps-Course-Starter.git'
+      dest: /opt/todoapp
+      version: exercise4
+
+  - name: install project dependencies
+    ansible.builtin.shell: cd /opt/todoapp; ~/.local/bin/poetry install
+
+  - name: create .env
+    ansible.builtin.template:
+      src: /home/ec2-user/.env.j2
+      dest: /opt/todoapp/.env
+      owner: ec2-user
+      mode: '700'
+
+  - name: copy service file to system
+    ansible.builtin.copy:
+      src: /opt/todoapp/todoapp.service
+      dest: /etc/systemd/system/todoapp.service
+      remote_src: yes
+    become: yes
+
+  - name: start app using systemd
+    ansible.builtin.systemd:
+      state: started
+      name: todoapp
+      daemon_reload: true
+    become: yes 
+
+
+
+
+
