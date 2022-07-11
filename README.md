@@ -68,3 +68,9 @@ To run the unit test please use command poetry run pytest
 login with your control IP ssh ec2-user@
 
 run your playbook with "ansible-playbook Playbook.yaml -i Inventory.ini"
+
+## How to start dockerfiles
+run these commands 
+docker build --tag todo-app .
+docker run --env-file .env todo-app
+docker run --entrypoint bash -it todo-app ( Run to look into container and debug )
