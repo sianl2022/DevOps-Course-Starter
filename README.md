@@ -69,8 +69,19 @@ login with your control IP ssh ec2-user@
 
 run your playbook with "ansible-playbook Playbook.yaml -i Inventory.ini"
 
-## How to start dockerfiles
+## dockerfiles compose
 run these commands 
 docker build --tag todo-app .
 docker run --env-file .env todo-app
 docker run --entrypoint bash -it todo-app ( Run to look into container and debug )
+
+## How to start dockerfiles
+To build the production container:
+`docker build --tag todo-app:prod --target production .`
+And to build the dev container:
+`docker build --tag todo-app:dev --target development .`
+
+You can then run both using `docker compose up`
+
+You can also debug the containers with:
+`docker run --entrypoint bash -it todo-app:<env>`
