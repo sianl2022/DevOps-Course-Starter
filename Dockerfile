@@ -1,9 +1,9 @@
 FROM python:3.7-buster as base
 
-ENV PATH="/root/.poetry/bin:$PATH"
+ENV PATH="/root/.local/bin:$PATH"
 
 
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python
 
 COPY poetry.lock pyproject.toml ./
 
@@ -26,3 +26,12 @@ WORKDIR /app
 COPY . /app
 
 CMD [ "poetry", "run", "flask", "run", "--host=0.0.0.0" ]
+
+FROM base as test
+
+RUN poetry install 
+
+WORKDIR /app
+COPY . /app
+
+CMD [ "poetry", "run", "pytest"]
