@@ -21,4 +21,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: docker build --target test --tag todo-test .
-    - run: docker run todo-test
+    - run: echo ${{secrets.DOCKER_TOKEN}} | docker login --username sianl --password-stdin
