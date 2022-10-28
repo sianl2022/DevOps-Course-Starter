@@ -85,3 +85,7 @@ You can then run both using `docker compose up`
 
 You can also debug the containers with:
 `docker run --entrypoint bash -it todo-app:<env>`
+
+## Build and push to docker 
+To build and push you will need to run this command 
+docker build --target production --tag sianl/my-todoapp .
