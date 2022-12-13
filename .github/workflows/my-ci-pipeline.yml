@@ -23,3 +23,4 @@ jobs:
     - run: docker build --target production --tag sianl/my-todoapp .
     - run: echo ${{secrets.DOCKER_TOKEN}} | docker login --username sianl --password-stdin
     - run: docker push sianl/my-todoapp
+    - run: curl -dH '${{secrets.WEBHOOK_URL}}'
