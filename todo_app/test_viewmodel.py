@@ -2,7 +2,7 @@ from todo_app.templates.view_model import ViewModel
 from todo_app.data.item import Item
 
 def test_view_can_ret_todo_items():
-    items= [Item('1234', 'start', 'todo')]
+    items= [Item('1234', 'start', 'To Do')]
     item_view_model = ViewModel(items)
 
     todo_items = item_view_model.todo_items
@@ -10,7 +10,7 @@ def test_view_can_ret_todo_items():
     assert len (todo_items) == 1
 
 def test_view_can_ret_doing_items():
-    items= [Item('5678', 'middle', 'doing')]
+    items= [Item('5678', 'middle', 'Doing')]
     item_view_model = ViewModel(items)
 
     doing_items = item_view_model.doing_items
@@ -18,7 +18,7 @@ def test_view_can_ret_doing_items():
     assert len (doing_items) == 1
 
 def test_view_can_ret_done_items():
-    items= [Item('91011', 'end', 'done')]
+    items= [Item('91011', 'end', 'Done')]
     item_view_model = ViewModel(items)
 
     done_items = item_view_model.done_items
@@ -27,8 +27,8 @@ def test_view_can_ret_done_items():
 
 def test_view_can_ret_all_done_items():
     items= [
-        Item('91011', 'end', 'done'),
-        Item('12489', 'end1', 'done')
+        Item('91011', 'end', 'Done'),
+        Item('12489', 'end1', 'Done')
         ]
 
     item_view_model = ViewModel(items)

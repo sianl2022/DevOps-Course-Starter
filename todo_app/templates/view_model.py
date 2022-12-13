@@ -9,7 +9,7 @@ class ViewModel:
     def todo_items(self):
         todo_items=[]
         for item in self._items:
-            if item.status == 'todo':
+            if item.status == 'To Do':
                 todo_items.append(item)
         return todo_items
         # using self._items, pick out and return only the items that are in the 'todo' status
@@ -18,7 +18,7 @@ class ViewModel:
     def doing_items(self):
         doing_items=[]
         for item in self._items:
-            if item.status == 'doing':
+            if item.status == 'Doing':
                 doing_items.append(item)
         return doing_items
         # using self._items, pick out and return only the items that are in the 'doing' status 
@@ -28,7 +28,7 @@ class ViewModel:
     def done_items(self):
         done_items=[]
         for item in self._items:
-            if item.status == 'done':
+            if item.status == 'Done':
                 done_items.append(item)
         return done_items
         # using self._items, pick out and return only the items that are in the 'done' status 
